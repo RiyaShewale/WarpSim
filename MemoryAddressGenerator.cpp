@@ -5,7 +5,6 @@
 #include <stdexcept>
 using namespace std;
 
-// Contiguous and strided address generation
 
 vector<uint64_t> generateAddresses(
     uint64_t warpId,
@@ -33,7 +32,7 @@ vector<uint64_t> generateAddresses(
     return addresses;
 }
 
-// Random address generation
+
 
 vector<uint64_t> generateRandomAddresses(
     uint64_t baseAddress,

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// Constructor: initialize cache configuration
+
 CacheSimulator::CacheSimulator(
     uint64_t cacheSize,
     uint64_t blockSize,
@@ -43,7 +43,6 @@ CacheSimulator::CacheSimulator(
     );
 }
 
-// Access one memory address
 bool CacheSimulator::access(uint64_t address) {
 
     uint64_t blockNumber = address / blockSize;
@@ -54,7 +53,7 @@ bool CacheSimulator::access(uint64_t address) {
 
     auto& currentSet = sets[setIndex];
 
-    // STEP 1: Check for a cache hit
+    
     for (auto& line : currentSet) {
 
         if (line.valid && line.tag == tag) {
@@ -66,10 +65,10 @@ bool CacheSimulator::access(uint64_t address) {
         }
     }
 
-    // STEP 2: Cache miss
+    
     stats.misses++;
 
-    // STEP 3: Find an empty line
+  
     for (auto& line : currentSet) {
 
         if (!line.valid) {
@@ -82,7 +81,7 @@ bool CacheSimulator::access(uint64_t address) {
         }
     }
 
-    // STEP 4: Set is full. Apply LRU replacement.
+    
     uint64_t lruIndex = 0;
 
     for (uint64_t i = 1; i < associativity; i++) {
@@ -94,7 +93,7 @@ bool CacheSimulator::access(uint64_t address) {
         }
     }
 
-    // Evict the least recently used line
+    
     stats.evictions++;
 
     currentSet[lruIndex].valid = true;
@@ -104,12 +103,11 @@ bool CacheSimulator::access(uint64_t address) {
     return false;
 }
 
-// Return cache statistics
 CacheStats CacheSimulator::getStats() const {
     return stats;
 }
 
-// Display results
+
 void CacheSimulator::printStats() const {
 
     uint64_t total = stats.hits + stats.misses;
@@ -127,7 +125,7 @@ void CacheSimulator::printStats() const {
     cout << "Hit rate: " << hitRate << "%\n";
 }
 
-// Reset the cache and its statistics
+
 void CacheSimulator::reset() {
 
     for (auto& set : sets) {
