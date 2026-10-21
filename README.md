@@ -60,6 +60,6 @@ Contiguous accesses require fewer memory block requests and achieve higher block
 
 ## Limitations
 
-WarpSim is a simplified, block-level software model rather than a cycle-accurate GPU simulator. It assumes 128-byte memory blocks and models a single cache level. It does not simulate actual NVIDIA GPU memory-sector behavior, execution scheduling, or hardware latency.
+WarpSim is a simplified, block-level software model rather than a cycle-accurate GPU simulator. It assumes 128-byte memory blocks and models a single cache level. It does not simulate actual GPU memory-sector behavior, execution scheduling, or hardware latency.
 
 Estimated memory traffic is calculated as cache misses multiplied by the block size, rather than measured physical GPU memory traffic.
